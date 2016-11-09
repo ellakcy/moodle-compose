@@ -4,6 +4,7 @@
 !.gitignore
 !docker-compose.yml
 !scripts
+!scripts/install.sh
 !.gitkeep
 !README.md
 !LICENSE.md
