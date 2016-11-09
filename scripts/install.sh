@@ -58,16 +58,16 @@ read -p "Moodle's Url: " MOODLE_URL
 
 cecho "Generate deployment Directory: " $magenta
 
-# PATH_URL= $(echo "${MOODLE_URL}" | sed -e "s/^[a-zA-Z]*:\/\///")
-#
-# echo ${PATH_URL}
-#
-# SCRIPT_PATH="${SCRIPT_PATH}/${PATH_URL}"
-#
-# echo ${SCRIPT_PATH}
-# if [ ! -f ${SCRIPT_PATH} ]; then
-#   mkdir -p ${SCRIPT_PATH}
-# fi
+PATH_URL=$(echo "${MOODLE_URL}" |  sed -r -e 's/^https?\:\/\/([a-zA-Z0-9.:-]*)\/*/\1/')
+
+echo ${PATH_URL}
+
+SCRIPT_PATH="${SCRIPT_PATH}/${PATH_URL}"
+
+echo ${SCRIPT_PATH}
+if [ ! -f ${SCRIPT_PATH} ]; then
+  mkdir -p ${SCRIPT_PATH}
+fi
 
 cecho "Generate startup and stop scripts" $magenta
 
