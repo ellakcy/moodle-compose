@@ -1,0 +1,26 @@
+version: '2'
+services:
+  moodle-db:
+    image: mysql
+    volumes:
+      - './data/db:/var/lib/mysql'
+    environment:
+        MYSQL_RANDOM_ROOT_PASSWORD: yes
+        MYSQL_ONETIME_PASSWORD: yes
+        MYSQL_USER: $MOODLE_MYSQL_USER
+        MYSQL_PASSWORD: $MOODLE_MYSQL_PASSWORD
+        MYSQL_DATABASE: $MOODLE_MYSQL_DATABASE
+
+  moodle:
+    image: ellakcy/moodle
+    volumes:
+      - './data/moodle:/var/moodledata'
+    ports:
+      - '8082:80'
+    links:
+      - moodle-db
+    environment:
+      MOODLE_URL: $MOODLE_URL
+      MOODLE_ADMIN: $MOODLE_ADMIN
+      MOODLE_ADMIN_PASSWORD: $MOODLE_ADMIN_PASSWORD
+      MOODLE_ADMIN_EMAIL: $MOODLE_ADMIN_EMAIL
