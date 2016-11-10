@@ -72,7 +72,10 @@ read -p "Admin password: " MOODLE_ADMIN_PASSWORD
 read -p "Admin Email: " MOODLE_ADMIN_EMAIL
 
 cecho "Moodle's admin user settings" $cyan
-read -p "Moodle's Url: " MOODLE_URL
+cecho "Note:If running on localhost set the asked value as http://0.0.0.0:8082 otherwise
+if running behind an http reverse proxy set the asked value with the PUBLIC FACING URL" $yellow
+
+read -p "Moodle's Public Url: " MOODLE_URL
 
 cecho "Generate deployment Directory: " $magenta
 
