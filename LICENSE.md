@@ -1,5 +1,5 @@
-    An implementation recipe using piwik and Wordpress
-    Copyright (C) 2016-2017 Cypriot Free Software Community Ellak 
+    An implementation of docker recipe for moodle
+    Copyright (C) 2016-2017 Cypriot Free Software Community Ellak
 
    This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
