@@ -10,6 +10,7 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
 done
 
 SCRIPT_PATH="$( cd -P "$( dirname "$SOURCE" )" && pwd )"/..
+DOCKER_COMPOSE_YML_PATH="${SCRIPT_PATH}/docker-compose.yml"
 
 # Printing functions
 black='\E[30;40m'
@@ -71,6 +72,7 @@ fi
 
 cecho "Generate startup and stop scripts" $magenta
 
+DOCKER_COMPOSE=$(whereis docker-compose | awk '{print $2}')
 COMMAND="env
             MOODLE_MYSQL_DATABASE=\"${MYSQL_DATABASE}\"
             MOODLE_MYSQL_USER=\"${MYSQL_USER}\"
@@ -79,7 +81,7 @@ COMMAND="env
             MOODLE_ADMIN_PASSWORD=\"${MOODLE_ADMIN_PASSWORD}\"
             MOODLE_ADMIN_EMAIL=\"${MOODLE_ADMIN_EMAIL}\"
             MOODLE_URL=\"${MOODLE_URL}\"
-            docker-compose"
+            ${DOCKER_COMPOSE} -f ${DOCKER_COMPOSE_YML_PATH}"
 
 STARTUP_SCRIPT_PATH="${SCRIPT_PATH}/start.sh"
 STOP_SCRIPT_PATH="${SCRIPT_PATH}/stop.sh"
