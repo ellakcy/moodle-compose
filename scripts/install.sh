@@ -81,14 +81,14 @@ cecho "Generate deployment Directory: " $magenta
 
 PATH_URL=$(echo "${MOODLE_URL}" |  sed -r -e 's/^https?\:\/\/([a-zA-Z0-9.:-]*)\/*/\1/')
 
-echo ${PATH_URL}
-
-SCRIPT_PATH="${SCRIPT_PATH}/${PATH_URL}"
-
-echo ${SCRIPT_PATH}
-if [ ! -f ${SCRIPT_PATH} ]; then
-  mkdir -p ${SCRIPT_PATH}
-fi
+# echo ${PATH_URL}
+#
+# SCRIPT_PATH="${SCRIPT_PATH}/${PATH_URL}"
+#
+# echo ${SCRIPT_PATH}
+# if [ ! -f ${SCRIPT_PATH} ]; then
+#   mkdir -p ${SCRIPT_PATH}
+# fi
 
 cecho "Generate startup and stop scripts" $magenta
 
@@ -101,7 +101,7 @@ COMMAND="env
             MOODLE_ADMIN_PASSWORD=\"${MOODLE_ADMIN_PASSWORD}\"
             MOODLE_ADMIN_EMAIL=\"${MOODLE_ADMIN_EMAIL}\"
             MOODLE_URL=\"${MOODLE_URL}\"
-            ${DOCKER_COMPOSE} -f ${DOCKER_COMPOSE_YML_PATH}"
+            docker-compose -f ${DOCKER_COMPOSE_YML_PATH}"
 
 STARTUP_SCRIPT_PATH="${SCRIPT_PATH}/start.sh"
 STOP_SCRIPT_PATH="${SCRIPT_PATH}/stop.sh"
