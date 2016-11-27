@@ -77,22 +77,8 @@ if running behind an http reverse proxy set the asked value with the PUBLIC FACI
 
 read -p "Moodle's Public Url: " MOODLE_URL
 
-cecho "Generate deployment Directory: " $magenta
-
-PATH_URL=$(echo "${MOODLE_URL}" |  sed -r -e 's/^https?\:\/\/([a-zA-Z0-9.:-]*)\/*/\1/')
-
-# echo ${PATH_URL}
-#
-# SCRIPT_PATH="${SCRIPT_PATH}/${PATH_URL}"
-#
-# echo ${SCRIPT_PATH}
-# if [ ! -f ${SCRIPT_PATH} ]; then
-#   mkdir -p ${SCRIPT_PATH}
-# fi
-
 cecho "Generate startup and stop scripts" $magenta
 
-DOCKER_COMPOSE=$(whereis docker-compose | awk '{print $2}')
 COMMAND="env
             MOODLE_MYSQL_DATABASE=\"${MYSQL_DATABASE}\"
             MOODLE_MYSQL_USER=\"${MYSQL_USER}\"
