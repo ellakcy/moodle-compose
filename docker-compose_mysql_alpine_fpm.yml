@@ -8,6 +8,7 @@ services:
      - '8082:8082'
    volumes:
      - './conf/nginx/nginx.conf:/etc/nginx/nginx.conf:ro'
+     - './logs/:/var/log/nginx'
    links:
      - 'moodle'
    volumes_from:
