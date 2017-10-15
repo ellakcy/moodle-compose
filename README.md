@@ -71,7 +71,7 @@ The recomended way to use it is using ssl and set the following:
 server {
 	listen 80;
 	# Put the site's url
-	server_name *site_url*;
+	server_name ^site_url^;
 	rewrite ^ https://$server_name$request_uri? permanent;
 }
 
@@ -79,8 +79,8 @@ server {
 
 	listen 443 ssl;
 
-        ssl_certificate     *path to certificate*;
-       	ssl_certificate_key *path to certificate key*;
+        ssl_certificate     ^path to certificate^;
+       	ssl_certificate_key ^path to certificate key^;
         ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
         ssl_ciphers         HIGH:!aNULL:!MD5;
 	server_name ellak.org;
@@ -103,4 +103,4 @@ server {
 
 ```
 
-Please replace the values with *italics* to the apropriate values. For ssl certificate we recomend the letencrpypt's certbot.
+Please replace the values that are between `^` with apropriate ones. For ssl certificate we recomend the letencrpypt's certbot.
