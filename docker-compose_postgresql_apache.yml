@@ -3,15 +3,13 @@ version: '2'
 services:
 
   moodle_db:
-    image: mysql
+    image: postgres
     volumes:
       - './data/db:/var/lib/mysql'
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
-      MYSQL_ONETIME_PASSWORD: "yes"
-      MYSQL_DATABASE: $MOODLE_DB_NAME
-      MYSQL_USER: $MOODLE_DB_USER
-      MYSQL_PASSWORD: $MOODLE_DB_PASSWORD
+      POSTGRES_DB: $MOODLE_DB_NAME
+      POSTGRES_USER: $MOODLE_DB_USER
+      POSTGRES_PASSWORD: $MOODLE_DB_PASSWORD
 
   moodle:
     image: ellakcy/moodle:latest

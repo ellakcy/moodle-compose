@@ -1,6 +1,7 @@
 version: '2'
 
 services:
+  
   moodle_db:
     image: mariadb
     volumes:
@@ -8,9 +9,9 @@ services:
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_ONETIME_PASSWORD: "yes"
+      MYSQL_DATABASE: $MOODLE_DB_NAME
       MYSQL_USER: $MOODLE_DB_USER
       MYSQL_PASSWORD: $MOODLE_DB_PASSWORD
-      MYSQL_DATABASE: $MOODLE_DB_NAME
 
   moodle:
     image: ellakcy/moodle:latest
