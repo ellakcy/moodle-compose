@@ -3,7 +3,7 @@ version: '2'
 services:
 
   moodle_db:
-    image: postgres
+    image: postgres:alpine
     volumes:
       - './data/db:/var/lib/postgresql/data'
     environment:
