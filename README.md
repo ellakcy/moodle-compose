@@ -1,4 +1,6 @@
-Moodle with mysql deployment recipe
+# Deployment recipe for ellakcy's docker moodle images
+
+A recipe/boilerplate in order to get the images from community's [moodle](https://github.com/ellakcy/docker-moodle) repo up and running.
 
 ## Installation
 Run the following commands:
@@ -104,3 +106,58 @@ server {
 ```
 
 Please replace the values that are between `^` with apropriate ones. For ssl certificate we recomend the letencrpypt's certbot.
+
+## I made my own image how can I play with?
+
+Is reccomended to link the appropriate yml file and replace the `image` at `moodle` section with your own. For example let suppose we a `foo/moodle` image based on `ellakcy/moodle:mysql_maria_apache` then we will run the following commands:
+
+```bash
+ln -s docker-compose_mysql_apache.yml docker-compose.yml
+```
+
+Then we will edit the `docker-compose.yml`:
+
+```bash
+nano docker-compose.yml
+```
+
+And we will put the following content:
+
+
+```yaml
+
+version: '2'
+
+services:
+
+  moodle_db:
+    image: mysql
+    volumes:
+      - './data/db:/var/lib/mysql'
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_ONETIME_PASSWORD: "yes"
+      MYSQL_DATABASE: $MOODLE_DB_NAME
+      MYSQL_USER: $MOODLE_DB_USER
+      MYSQL_PASSWORD: $MOODLE_DB_PASSWORD
+
+  moodle:
+    image: foo/moodle
+    volumes:
+      - './data/moodle:/var/moodledata'
+    ports:
+      - '8082:80'
+    links:
+      - moodle_db
+    environment:
+      MOODLE_URL: $MOODLE_URL
+      MOODLE_ADMIN: $MOODLE_ADMIN
+      MOODLE_ADMIN_PASSWORD: $MOODLE_ADMIN_PASSWORD
+      MOODLE_ADMIN_EMAIL: $MOODLE_ADMIN_EMAIL
+      MOODLE_DB_TYPE: "mariadb"
+      MOODLE_DB_HOST: "moodle_db"
+      MOODLE_DB_USER: $MOODLE_DB_USER
+      MOODLE_DB_PASSWORD: $MOODLE_DB_PASSWORD
+      MOODLE_DB_NAME: $MOODLE_DB_NAME
+
+```
