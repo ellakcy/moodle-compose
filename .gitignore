@@ -1,10 +1,1 @@
-#WE are ignoring everything in order not to get mixed all the startup scripts with it
-*
-#We are only keeping the files nessesary for the recipe
-!.gitignore
-!*.yml
-!scripts
-!scripts/install.sh
-!.gitkeep
-!README.md
-!LICENSE.md
+data
