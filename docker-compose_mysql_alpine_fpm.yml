@@ -24,6 +24,8 @@ services:
 
   moodle:
     image: ellakcy/moodle:mysql_maria_fpm_alpine
+    volumes:
+      - './data/moodle:/var/moodledata'
     links:
       - 'moodle_db'
     environment:
