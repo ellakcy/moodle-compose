@@ -55,7 +55,7 @@ With that we stopped removed the old images we fetched the new ones and we rerun
 
 Most of the times the moodle may need to run behind an http reverse proxy. In this case set the value for the url that the end user will type in his/her browser. )Otherwise set the value http://0.0.0.0:8082
 
-### In case you ewant to change port that webserver listens
+### In case you want to change port that webserver listens
 
 You should edit the following files:
 
