@@ -19,11 +19,11 @@ services:
   volumes:
     - './data/db:/var/lib/postgresql/data'
   environment:
-    POSTGRES_DB: $MOODLE_DB_NAME
-    POSTGRES_USER: $MOODLE_DB_USER
-    POSTGRES_PASSWORD: $MOODLE_DB_PASSWORD
+    POSTGRES_DB: '${MOODLE_DB_NAME}'
+    POSTGRES_USER: '${MOODLE_DB_USER}'
+    POSTGRES_PASSWORD: '${MOODLE_DB_PASSWORD}'
 
-  moodle:
+ moodle:
     image: ellakcy/moodle:postgresql_fpm_alpine
     volumes:
       - './data/moodle:/var/moodledata'
