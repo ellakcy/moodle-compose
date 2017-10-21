@@ -10,7 +10,7 @@ git clone git@github.com:ellakcy/moodle-compose.git
 ln -s ^correct_moodle_compose.yml^ docker-compose.yml
 ```
 
-On the last command above replace `^correct_moodle_compose.yml^` with one of the following table:
+On the last command above replace the `^correct_moodle_compose.yml^` with one of the following table:
 
 How to run php | Mysql | Mariadb | Postgresql
 --- | --- | --- | ---
