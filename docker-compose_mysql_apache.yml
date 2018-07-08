@@ -3,7 +3,7 @@ version: '2'
 services:
 
   moodle_db:
-    image: mysql
+    image: mysql:5.7
     volumes:
       - './data/db:/var/lib/mysql'
     environment:
