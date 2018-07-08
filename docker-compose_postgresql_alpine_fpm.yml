@@ -18,6 +18,7 @@ services:
   image: postgres:alpine
   volumes:
     - './data/db:/var/lib/postgresql/data'
+    - './data/moodle/www:/var/www'
   environment:
     POSTGRES_DB: '${MOODLE_DB_NAME}'
     POSTGRES_USER: '${MOODLE_DB_USER}'
@@ -34,7 +35,7 @@ services:
       MOODLE_ADMIN: $MOODLE_ADMIN
       MOODLE_ADMIN_PASSWORD: $MOODLE_ADMIN_PASSWORD
       MOODLE_ADMIN_EMAIL: $MOODLE_ADMIN_EMAIL
-      MOODLE_DB_TYPE: 'mariadb'
+      MOODLE_DB_TYPE: 'pgsql'
       MOODLE_DB_HOST: 'moodle_db'
       MOODLE_DB_USER: $MOODLE_DB_USER
       MOODLE_DB_PASSWORD: $MOODLE_DB_PASSWORD
