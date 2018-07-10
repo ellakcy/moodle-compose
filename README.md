@@ -74,7 +74,7 @@ server {
 	listen 80;
 	# Put the site's url
 	server_name ^site_url^;
-	rewrite ^ https://$server_name$request_uri? permanent;
+	return 301 https://$server_name$request_uri;
 }
 
 server {
@@ -105,7 +105,7 @@ server {
 
 ```
 
-Please replace the values that are between `^` with apropriate ones. For ssl certificate we recomend the letencrpypt's certbot.
+Please replace the values that are between `^` with apropriate ones. For ssl certificate we recomend the letencrpypt's certbot. Also the reverse proxy should **NEVER** forward the `Host` http header. For more info you can consult the [nginx configuration](https://raw.githubusercontent.com/ellakcy/docker-moodle/master/conf/nginx/nginx_ssl_reverse.conf) delivered by us.
 
 ## Migrations from fpm to apache
 
