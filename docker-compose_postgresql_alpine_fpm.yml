@@ -18,7 +18,7 @@ services:
   image: postgres:alpine
   volumes:
     - './data/db:/var/lib/postgresql/data'
-    - './data/moodle/www:/var/www'
+    - './data/moodle/www:/var/www/html'
   environment:
     POSTGRES_DB: '${MOODLE_DB_NAME}'
     POSTGRES_USER: '${MOODLE_DB_USER}'
