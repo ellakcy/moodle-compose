@@ -53,9 +53,9 @@ With that we stopped removed the old images we fetched the new ones and we rerun
 
 ## Info regarding the moodle's url
 
-Most of the times the moodle may need to run behind an http reverse proxy. In this case set the value for the url that the end user will type in his/her browser. )Otherwise set the value http://0.0.0.0:8082
+Most of the times the moodle may need to run behind an http reverse proxy. In this case set the value for the url that the end user will type in his/her browser. Otherwise set the value http://0.0.0.0:8082
 
-### In case you ewant to change port that webserver listens
+### In case you want to change port that docker delivered nginx webserver listens
 
 You should edit the following files:
 
@@ -106,6 +106,14 @@ server {
 ```
 
 Please replace the values that are between `^` with apropriate ones. For ssl certificate we recomend the letencrpypt's certbot.
+
+## Migrations from fpm to apache
+
+You can easily migrate from fpm ones into apache ones, but theese concers should be followed:
+
+* The database layer should be the same eg. if you select `mysql` variant stick to that.
+* Remove the `docker-compse.yml` and link with the aqpache variant.
+* The opposite shoulde be plausible as well.
 
 ## I made my own image how can I play with?
 
