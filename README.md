@@ -12,10 +12,12 @@ ln -s ^correct_moodle_compose.yml^ docker-compose.yml
 
 On the last command above replace the `^correct_moodle_compose.yml^` with one of the following table:
 
-How to run php | Mysql | Mariadb | Postgresql
+Database | apache | alpine fpm | lts
 --- | --- | --- | ---
-apache | `docker-compose_mysql_apache.yml` | `docker-compose_maria_apache.yml` | `docker-compose_postgresql_apache.yml`
-fpm | `docker-compose_postgresql_alpine_fpm.yml` | `docker-compose_maria_alpine_fpm.yml` | `docker-compose_postgresql_alpine_fpm.yml`
+Mysql | `docker-compose_mysql_apache.yml`  |  `docker-compose_postgresql_alpine_fpm.yml` | no
+mariadb | `docker-compose_maria_apache.yml` | `docker-compose_maria_alpine_fpm.yml` | no
+postgresql | `docker-compose_postgresql_apache.yml` | `docker-compose_postgresql_alpine_fpm.yml` | no
+
 
 Then edit the `.env` file accorditly, you will need to put some values in it please rest easy in in there are instructions in it regarding the values to fill. This can be done via a text editor:
 
