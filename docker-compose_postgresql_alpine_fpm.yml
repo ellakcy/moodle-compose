@@ -15,7 +15,7 @@ services:
      - 'moodle'
 
  moodle_db:
-  image: postgres:alpine
+  image: postgres:9-alpine
   volumes:
     - './data/db:/var/lib/postgresql/data'
     - './data/moodle/www:/var/www/html'
