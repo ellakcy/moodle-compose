@@ -6,6 +6,7 @@ services:
     image: mysql:5.7
     volumes:
       - './data/db:/var/lib/mysql'
+    command: mysqld --innodb-buffer-pool-size=256M
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_ONETIME_PASSWORD: "yes"
