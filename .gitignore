@@ -3,3 +3,4 @@ logs
 docker-compose.yml
 *.dev
 .env
+.vagrant
