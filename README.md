@@ -59,6 +59,7 @@ docker-compose exec moodle_db mysqldump -umoodle -punsafepasswd --databases mood
 ```
 
 ### Step2 Backup moodle data and code:
+
 In folder `data/moodle` are located ann the moodle data and code.
 In folder `data/moodle/www` the moodle code is located whilst at the parent `data/moodle` the rest of the data (images, cache etc etc) is located.
 
@@ -71,7 +72,7 @@ Just run the following command:
 docker-compose stop && docker-compose rm && docker-compose pull && docker-compose up -d
 ```
 
-With that we stopped removed the old images we fetched the new ones and we rerun the new containers
+With that we stopped removed the old images we fetched the new ones and we rerun the new containers.
 
 ## Info regarding the moodle's url
 
