@@ -45,6 +45,26 @@ docker-compose stop
 
 ## Run newer version:
 
+### Step1 Backup Dababase:
+Look for username and password in the database:
+
+For postgresql:
+```bash
+docker-compose exec moodle_db pg_dump -U ^MOODLE_DB_USER^ ^MOODLE_DB_NAME^ > db_dump.sql
+```
+
+For mariadb/mysql:
+```bash
+docker-compose exec moodle_db mysqldump -umoodle -punsafepasswd --databases moodle > db_dump.sql
+```
+
+### Step2 Backup moodle data and code:
+In folder `data/moodle` are located ann the moodle data and code.
+In folder `data/moodle/www` the moodle code is located whilst at the parent `data/moodle` the rest of the data (images, cache etc etc) is located.
+
+You may copy the `./data/moodle` to the folder of your destination. Keep in mind though because theese folder under linux environment will have either `root` or `www-data` user and group. So during restore you may want to set these permissions, use `ls -l` in order to keep track of them.
+
+### Step2 Download newer versions
 Just run the following command:
 
 ```bash
