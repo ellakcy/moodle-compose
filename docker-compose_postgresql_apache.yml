@@ -3,19 +3,19 @@ version: '2'
 services:
 
   moodle_db:
-    image: postgres:alpine
+    image: postgres:11
     volumes:
-      - './data/db:/var/lib/postgresql/data'
+      - 'moodledb:/var/lib/postgresql/data'
     environment:
       POSTGRES_DB: $MOODLE_DB_NAME
       POSTGRES_USER: $MOODLE_DB_USER
       POSTGRES_PASSWORD: $MOODLE_DB_PASSWORD
 
   moodle:
-    image: ellakcy/moodle:postgresql_apache
+    image: ellakcy/moodle:postgresql_apache_latest
     volumes:
       - './data/moodle/data:/var/moodledata'
-      - './data/moodle/www:/var/www/html'
+      - 'www:/var/www/html'
     ports:
       - '8082:80'
     links:
@@ -33,3 +33,7 @@ services:
       MOODLE_SSL: $MOODLE_SSL
       MOODLE_EMAIL_TYPE_QMAIL: $MOODLE_EMAIL_TYPE_QMAIL
       MOODLE_EMAIL_HOST: $MOODLE_EMAIL_HOST
+
+volumes:
+  moodledb:
+  www:

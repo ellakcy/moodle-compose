@@ -61,7 +61,7 @@ docker-compose exec moodle_db mysqldump -umoodle -punsafepasswd --databases mood
 ### Step2 Backup moodle data and code:
 
 In folder `data/moodle` are located ann the moodle data and code.
-In folder `data/moodle/www` the moodle code is located whilst at the parent `data/moodle` the rest of the data (images, cache etc etc) is located.
+In folder `data/moodle/www` the moodle code is located whilst at the parent `data/moodle` the rest of the data (images, cache etc etc) is located. In later versions we wont use a bind mount for the moodle's data. Check the `volumes` section in order to understand whether we use bind mount or normal volume.
 
 You may copy the `./data/moodle` to the folder of your destination. Keep in mind though because theese folder under linux environment will have either `root` or `www-data` user and group. So during restore you may want to set these permissions, use `ls -l` in order to keep track of them.
 
