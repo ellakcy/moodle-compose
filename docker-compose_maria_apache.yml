@@ -36,3 +36,7 @@ services:
       MOODLE_SSL: $MOODLE_SSL
       MOODLE_EMAIL_TYPE_QMAIL: $MOODLE_EMAIL_TYPE_QMAIL
       MOODLE_EMAIL_HOST: $MOODLE_EMAIL_HOST
+
+volumes:
+  moodledb_maria_apache:
+  www_maria_apache:
