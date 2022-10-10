@@ -26,7 +26,7 @@ services:
       MYSQL_PASSWORD: '${MOODLE_DB_PASSWORD}'
 
   moodle:
-    image: ellakcy/moodle:mysql_maria_apache_latest
+    image: ellakcy/moodle:mysql_maria_alpine_fpm_latest
     volumes:
       - './data/moodle:/var/moodledata'
       - 'www_maria_alpine_fpm:/var/www/html'

@@ -14,7 +14,7 @@ services:
       MYSQL_PASSWORD: $MOODLE_DB_PASSWORD
 
   moodle:
-    image: ellakcy/moodle:mysql_maria_apache
+    image: ellakcy/moodle:mysql_maria_apache_latest
     volumes:
       - './data/moodle:/var/moodledata:rw'
       - './data/moodle/www:/var/www/html:rw'
