@@ -16,6 +16,8 @@ services:
 
   moodle_db:
     image: mysql:5.7
+    volumes:
+      - 'moodledb_mysql_alpine_fpm:/var/lib/mysql'
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
       MYSQL_ONETIME_PASSWORD: 'yes'
@@ -27,7 +29,7 @@ services:
     image: ellakcy/moodle:mysql_maria_fpm_alpine
     volumes:
       - './data/moodle:/var/moodledata'
-      - './data/moodle/www:/var/www/html'
+      - 'www_mysql_alpine_fpm:/var/www/html'
     links:
       - 'moodle_db'
     environment:
@@ -44,3 +46,7 @@ services:
       MOODLE_SSL: $MOODLE_SSL
       MOODLE_EMAIL_TYPE_QMAIL: MOODLE_EMAIL_TYPE_QMAIL
       MOODLE_EMAIL_HOST: MOODLE_EMAIL_HOST
+
+volumes:
+  moodledb_mysql_alpine_fpm:
+  www_mysql_alpine_fpm:
