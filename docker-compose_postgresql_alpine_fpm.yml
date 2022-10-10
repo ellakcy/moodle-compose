@@ -9,7 +9,7 @@ services:
    volumes:
      - './conf/nginx.conf:/etc/nginx/nginx.conf:ro'
      - './logs/:/var/log/nginx'
-     - 'www_alpine_fpm:/var/www/html'
+     - 'www_psql_alpine_fpm:/var/www/html'
    links:
      - 'moodle'
    volumes_from:
@@ -18,7 +18,7 @@ services:
   moodle_db:
     image: postgres:11
     volumes:
-      - 'moodledb_alpine_fpm:/var/lib/postgresql/data'
+      - 'moodledb_psql_alpine_fpm :/var/lib/postgresql/data'
       - './data/moodle/www:/var/www/html'
     environment:
       POSTGRES_DB: '${MOODLE_DB_NAME}'
@@ -29,7 +29,7 @@ services:
     image: ellakcy/moodle:postgresql_fpm_alpine_latest
     volumes:
       - './data/moodle:/var/moodledata'
-      - 'www_alpine_fpm:/var/www/html'
+      - 'www_psql_alpine_fpm:/var/www/html'
     links:
       - 'moodle_db'
     environment:
@@ -47,5 +47,5 @@ services:
       MOODLE_EMAIL_HOST: $MOODLE_EMAIL_HOST
 
 volumes:
-  moodledb_alpine_fpm:
-  www_alpine_fpm:
+  moodledb_psql_alpine_fpm :
+  www_psql_alpine_fpm:
