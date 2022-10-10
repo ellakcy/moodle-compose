@@ -5,7 +5,7 @@ services:
   moodle_db:
     image: postgres:11
     volumes:
-      - 'moodledb:/var/lib/postgresql/data'
+      - 'moodledb_apache:/var/lib/postgresql/data'
     environment:
       POSTGRES_DB: $MOODLE_DB_NAME
       POSTGRES_USER: $MOODLE_DB_USER
@@ -15,7 +15,7 @@ services:
     image: ellakcy/moodle:postgresql_apache_latest
     volumes:
       - './data/moodle/data:/var/moodledata'
-      - 'www:/var/www/html'
+      - 'www_apache:/var/www/html'
     ports:
       - '8082:80'
     links:
@@ -35,5 +35,5 @@ services:
       MOODLE_EMAIL_HOST: $MOODLE_EMAIL_HOST
 
 volumes:
-  moodledb:
-  www:
+  moodledb_apache:
+  www_apache:
