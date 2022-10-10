@@ -5,7 +5,7 @@ services:
   moodle_db:
     image: mysql:5.7
     volumes:
-      - './data/db:/var/lib/mysql'
+      - 'moodledb_mysql_apache:/var/lib/mysql'
     environment:
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
       MYSQL_ONETIME_PASSWORD: "yes"
@@ -17,7 +17,7 @@ services:
     image: ellakcy/moodle:mysql_maria_apache
     volumes:
       - './data/moodle:/var/moodledata'
-      - './data/moodle/www:/var/www/html'
+      - 'www_mysql_apache:/var/www/html'
     ports:
       - '8082:80'
     links:
@@ -36,3 +36,7 @@ services:
       MOODLE_SSL: $MOODLE_SSL
       MOODLE_EMAIL_TYPE_QMAIL: MOODLE_EMAIL_TYPE_QMAIL
       MOODLE_EMAIL_HOST: MOODLE_EMAIL_HOST
+
+volumes:
+  moodledb_mysql_apache:
+  www_mysql_apache:
