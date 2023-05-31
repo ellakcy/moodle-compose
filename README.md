@@ -6,6 +6,7 @@ A recipe/boilerplate in order to get the images from community's [moodle](https:
 Run the following commands:
 
 ```bash
+cp .env.dist .env 
 git clone git@github.com:ellakcy/moodle-compose.git
 ln -s ^correct_moodle_compose.yml^ docker-compose.yml
 ```
