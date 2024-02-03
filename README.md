@@ -1,5 +1,8 @@
 # Deployment recipe for ellakcy's docker moodle images
 
+> This is no longer mentained you can make your own deployments using the images from https://github.com/ellakcy/docker-moodle
+> In order to make your own look at docker-compose documentation https://docs.docker.com/compose/
+
 A recipe/boilerplate in order to get the images from community's [moodle](https://github.com/ellakcy/docker-moodle) repo up and running.
 
 ## Installation
